@@ -873,20 +873,25 @@ test = ["pytest"]
 
 [[package]]
 name = "cyclonedx-python-lib"
-version = "4.2.3"
-description = "A library for producing CycloneDX SBOM (Software Bill of Materials) files."
+version = "6.4.1"
+description = "Python library for CycloneDX"
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8,<4.0"
 files = [
-    {file = "cyclonedx_python_lib-4.2.3-py3-none-any.whl", hash = "sha256:e9b923af525b6acf7bab917a35360b4b562b85dc15fde9eaa500828949adf73a"},
-    {file = "cyclonedx_python_lib-4.2.3.tar.gz", hash = "sha256:904068b55d1665f0ea96f38307603cc14f95c3b421f1687fc2411326aefde3a6"},
+    {file = "cyclonedx_python_lib-6.4.1-py3-none-any.whl", hash = "sha256:42d50052c4604e8d6a91753e51bca33d668fb82adc1aab3f4eb54b89fa61cbc0"},
+    {file = "cyclonedx_python_lib-6.4.1.tar.gz", hash = "sha256:aca5d8cf10f8d8420ba621e0cf4a24b98708afb68ca2ca72d7f2cc6394c75681"},
 ]
 
 [package.dependencies]
 license-expression = ">=30,<31"
-packageurl-python = ">=0.11"
-py-serializable = ">=0.11.1,<0.12.0"
+packageurl-python = ">=0.11,<2"
+py-serializable = ">=0.16,<2"
 sortedcontainers = ">=2.4.0,<3.0.0"
+
+[package.extras]
+json-validation = ["jsonschema[format] (>=4.18,<5.0)"]
+validation = ["jsonschema[format] (>=4.18,<5.0)", "lxml (>=4,<6)"]
+xml-validation = ["lxml (>=4,<6)"]
 
 [[package]]
 name = "dataclasses-json"
@@ -3758,18 +3763,18 @@ pip = "*"
 
 [[package]]
 name = "pip-audit"
-version = "2.6.1"
+version = "2.7.0"
 description = "A tool for scanning Python environments for known vulnerabilities"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "pip_audit-2.6.1-py3-none-any.whl", hash = "sha256:8a32bb67dca6a76c244bbccebed562c0f6957b1fc9d34d59a9ec0fbff0672ae0"},
-    {file = "pip_audit-2.6.1.tar.gz", hash = "sha256:55c9bd18b0fe3959f73397db08d257c6012ad1826825e3d74cb6c3f79e95c245"},
+    {file = "pip_audit-2.7.0-py3-none-any.whl", hash = "sha256:83e039740653eb9ef1a78b1540ed441600cd88a560588ba2c0a169180685a522"},
+    {file = "pip_audit-2.7.0.tar.gz", hash = "sha256:67740c5b1d5d967a258c3dfefc46f9713a2819c48062505ddf4b29de101c2b75"},
 ]
 
 [package.dependencies]
 CacheControl = {version = ">=0.13.0", extras = ["filecache"]}
-cyclonedx-python-lib = ">=4.0,<5.0"
+cyclonedx-python-lib = ">=5,<7"
 html5lib = ">=1.1"
 packaging = ">=23.0.0"
 pip-api = ">=0.0.28"
@@ -3781,8 +3786,8 @@ toml = ">=0.10"
 [package.extras]
 dev = ["build", "bump (>=1.3.2)", "pip-audit[doc,lint,test]"]
 doc = ["pdoc"]
-lint = ["black (>=22.3.0)", "interrogate", "isort", "mypy", "ruff (<0.0.281)", "types-html5lib", "types-requests", "types-toml"]
-test = ["coverage[toml]", "pretend", "pytest", "pytest-cov"]
+lint = ["interrogate", "mypy", "ruff (<0.1.12)", "types-html5lib", "types-requests", "types-toml"]
+test = ["coverage[toml] (>=7.0,!=7.3.3,<8.0)", "pretend", "pytest", "pytest-cov"]
 
 [[package]]
 name = "pip-requirements-parser"
@@ -4024,13 +4029,13 @@ tests = ["pytest"]
 
 [[package]]
 name = "py-serializable"
-version = "0.11.1"
+version = "1.0.0"
 description = "Library for serializing and deserializing Python Objects to and from JSON and XML."
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8,<4.0"
 files = [
-    {file = "py-serializable-0.11.1.tar.gz", hash = "sha256:ba0e1287b9e4f645a5334f1913abd8e647e7250209f84f55dce3909498a6f586"},
-    {file = "py_serializable-0.11.1-py3-none-any.whl", hash = "sha256:79e21f0672822e6200b15f45ce9f636e8126466f62dbd7d488c67313c72b5c3e"},
+    {file = "py_serializable-1.0.0-py3-none-any.whl", hash = "sha256:845a9399a16550e8703c3fb0da4fbb746a4e5f6cc4c95647c315c71fd6567cd5"},
+    {file = "py_serializable-1.0.0.tar.gz", hash = "sha256:524df68c46315d7272959ae5296244e5a1e1e28330472ec214394162c39f545e"},
 ]
 
 [package.dependencies]
@@ -4539,6 +4544,7 @@ files = [
     {file = "PyYAML-6.0.1-cp311-cp311-win_amd64.whl", hash = "sha256:bf07ee2fef7014951eeb99f56f39c9bb4af143d8aa3c21b1677805985307da34"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:855fb52b0dc35af121542a76b9a84f8d1cd886ea97c84703eaa6d88e37a2ad28"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:40df9b996c2b73138957fe23a16a4f0ba614f4c0efce1e9406a184b6d07fa3a9"},
+    {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a08c6f0fe150303c1c6b71ebcd7213c2858041a7e01975da3a99aed1e7a378ef"},
     {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6c22bec3fbe2524cde73d7ada88f6566758a8f7227bfbf93a408a9d86bcc12a0"},
     {file = "PyYAML-6.0.1-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:8d4e9c88387b0f5c7d5f281e55304de64cf7f9c0021a3525bd3b1c542da3b0e4"},
     {file = "PyYAML-6.0.1-cp312-cp312-win32.whl", hash = "sha256:d483d2cdf104e7c9fa60c544d92981f12ad66a457afae824d146093b8c294c54"},
